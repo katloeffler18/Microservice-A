@@ -17,11 +17,16 @@ def movie_selector():
         return jsonify({'error': 'Candidates must be a non-empty array of strings.'})
 
     # Get randomly selected movie from array of candidates
-    movie = candidates[random.randint(0, len(candidates)-1)]
+    movie = select_random_movie(candidates)
     selection = {'selection': movie}
 
     # Return JSON object of random selection
     return jsonify(selection)
+
+
+def select_random_movie(candidates):
+    """Randomly selects a movie from a list of strings."""
+    return candidates[random.randint(0, len(candidates)-1)]
 
 
 
